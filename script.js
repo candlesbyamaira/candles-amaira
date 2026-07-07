@@ -25,7 +25,7 @@
             {
                 name: 'Rose Bloom Jar',
                 badge: 'Best Seller',
-                image: 'images/RoseInJar.PNG',
+                image: 'images/CuteJar.PNG',
                 emoji: false
             },
             {
@@ -37,7 +37,7 @@
             {
                 name: 'Teddy in Jar',
                 badge: 'Gift Idea',
-                image: 'images/TeddyInJar.PNG',
+                image: 'images/CuteJar2.PNG',
                 emoji: false
             },
             {
@@ -79,13 +79,13 @@
             {
                 name: 'Bunny Hop',
                 badge: 'New',
-                image: 'images/Rabit.PNG',
+                image: 'images/Mouse.PNG',
                 emoji: false
             },
             {
                 name: 'Crescent Moon',
                 badge: 'Seasonal',
-                image: 'images/Ramadan.PNG',
+                image: 'images/Crescent Moon.jpeg',
                 emoji: false
             },
             {
@@ -97,19 +97,19 @@
             {
                 name: 'Tea Time Comfort',
                 badge: 'Relaxation',
-                image: 'images/Tea.PNG',
+                image: 'images/Choco.PNG',
                 emoji: false
             },
             {
                 name: 'Multiple Teddies',
                 badge: 'Gift Idea',
-                image: 'images/Teddies.PNG',
+                image: 'images/Heart.PNG',
                 emoji: false
             },
             {
                 name: 'Wine Night',
                 badge: 'Adult Scents',
-                image: 'images/Wine.PNG',
+                image: 'images/Lamps.PNG',
                 emoji: false
             },
             {
@@ -151,7 +151,7 @@
             {
                 name: 'Sheep Herd',
                 badge: 'Best Seller',
-                image: 'images/SheepHerd.PNG',
+                image: 'images/Cow.PNG',
                 emoji: false
             },
             {
