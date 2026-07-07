@@ -156,25 +156,25 @@
             },
             {
                 name: 'Newborn Joy',
-                badge: 'Baby Shower',
+                badge: 'Best Seller',
                 image: 'images/BabyFeet.PNG',
                 emoji: false
             },
             {
                 name: 'Inspired Candles - Hero Harvest',
-                badge: 'Hero Harvest',
+                badge: 'New',
                 image: 'images/Web.PNG',
                 emoji: false
             },
             {
                 name: 'Insipred Candles - Wizards Brew',
-                badge: 'Wizard',
+                badge: 'Popular',
                 image: 'images/Wizard.PNG',
                 emoji: false
             },
             {
                 name: 'Flower Bouquet',
-                badge: 'Bouquet',
+                badge: 'Gift Idea',
                 image: 'images/FlowerBouquet.PNG',
                 emoji: false
             }
