@@ -202,15 +202,13 @@
                     <!--<div class="product-price">${product.price}</div>-->
 
                     <div class="fragrance-section">
-                        <div class="fragrance-title">🌸 Pick Your Scent</div>
-                        <div class="fragrance-pills">
-                            ${fragrances.map((f, fragranceIndex) => `
-                                <button type="button" class="fragrance-pill ${fragranceIndex >= 6 ? 'is-hidden' : ''}" data-fragrance="${f.name}" aria-pressed="false">
-                                    ${f.emoji} ${f.name}
-                                </button>
+                        <label class="fragrance-title" for="fragrance-${index}">🌸 Pick Your Scent</label>
+                        <select class="fragrance-select" id="fragrance-${index}">
+                            <option value="">Choose a scent</option>
+                            ${fragrances.map(f => `
+                                <option value="${f.name}">${f.emoji} ${f.name}</option>
                             `).join('')}
-                        </div>
-                        <button type="button" class="fragrance-toggle" data-expanded="false">Show more scents</button>
+                        </select>
                         <div class="selection-display" id="selected-${index}"></div>
                     </div>
 
@@ -227,65 +225,19 @@
                 grid.appendChild(card);
 
                 // Fragrance selection
-                const fragrancePills = Array.from(card.querySelectorAll('.fragrance-pill'));
-                const fragranceToggle = card.querySelector('.fragrance-toggle');
+                const fragranceSelect = card.querySelector('.fragrance-select');
                 const selectedDisplay = card.querySelector(`#selected-${index}`);
                 const whatsappBtn = card.querySelector(`#whatsapp-${index}`);
                 const emailBtn = card.querySelector(`#email-${index}`);
 
                 let selectedFragrance = '';
-                let expanded = false;
-                const visibleCount = 6;
 
-                function syncVisiblePills() {
-                    fragrancePills.forEach((pill, idx) => {
-                        pill.classList.toggle('is-hidden', idx >= visibleCount && !expanded);
-                    });
-
-                    if (fragrancePills.length > visibleCount) {
-                        fragranceToggle.style.display = 'inline-flex';
-                        fragranceToggle.textContent = expanded ? 'Show fewer scents' : 'Show more scents';
-                        fragranceToggle.setAttribute('data-expanded', String(expanded));
-                    } else {
-                        fragranceToggle.style.display = 'none';
-                    }
-                }
-
-                fragrancePills.forEach(pill => {
-                    const toggleFragrance = (event) => {
-                        event.preventDefault();
-                        const alreadySelected = pill.classList.contains('selected');
-
-                        fragrancePills.forEach(option => {
-                            option.classList.remove('selected');
-                            option.setAttribute('aria-pressed', 'false');
-                        });
-
-                        if (!alreadySelected) {
-                            pill.classList.add('selected');
-                            pill.setAttribute('aria-pressed', 'true');
-                            selectedFragrance = pill.dataset.fragrance;
-                        } else {
-                            selectedFragrance = '';
-                        }
-
-                        selectedDisplay.textContent = selectedFragrance
-                            ? `✨ ${selectedFragrance} selected`
-                            : '';
-                        updateOrderLinks();
-                    };
-
-                    pill.addEventListener('click', toggleFragrance);
-                    pill.addEventListener('keydown', (event) => {
-                        if (event.key === 'Enter' || event.key === ' ') {
-                            toggleFragrance(event);
-                        }
-                    });
-                });
-
-                fragranceToggle.addEventListener('click', function() {
-                    expanded = !expanded;
-                    syncVisiblePills();
+                fragranceSelect.addEventListener('change', function() {
+                    selectedFragrance = this.value;
+                    selectedDisplay.textContent = selectedFragrance
+                        ? `✨ ${selectedFragrance} selected`
+                        : '';
+                    updateOrderLinks();
                 });
 
                 function updateOrderLinks() {
@@ -306,7 +258,6 @@
                     emailBtn.href = `mailto:${CONFIG.email}?subject=${emailSubject}&body=${emailBody}`;
                 }
 
-                syncVisiblePills();
                 updateOrderLinks();
             });
         }
