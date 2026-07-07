@@ -125,7 +125,7 @@
                 emoji: false
             },
             {
-                name: 'Romantic Couple',
+                name: 'Forever Yours!',
                 badge: 'Gift Idea',
                 image: 'images/Couple.PNG',
                 emoji: false
