@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candles by Amaira - Handcrafted with Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+    <div class="bg-shape shape3"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">Candles by Amaira</h1>
+            <p class="tagline">Handcrafted with Love ♥</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('shop')">🕯️ Shop</button>
+            <button class="tab-btn" onclick="switchTab('about')">✨ About Us</button>
+        </nav>
+
+        <!-- Shop Tab Content -->
+        <div id="shop-tab" class="tab-content active">
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+
+        <!-- About Us Tab Content -->
+        <div id="about-tab" class="tab-content">
+            <div class="about-section">
+                <div class="about-header">
+                    <h2 class="about-title">Our Story</h2>
+                    <p class="about-subtitle">
+                        Bringing Elegance and Glow to Your Heart
+                    </p>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            Welcome to Candles by Amaira – where a mother's creativity meets a daughter's wonder, creating magic one candle at a time.
+                        </p>
+                        <p>
+                            Our journey began in our home kitchen, with 5-year-old Amaira as my enthusiastic little assistant. What started as a creative project has blossomed into a labor of love that we share with you. Every candle tells our story – of giggles during the pouring process, careful fragrance selections, and the pure joy of creating something beautiful together.
+                        </p>
+                        <p>
+                            We believe in keeping things natural and simple. That's why we use only premium soy wax and beeswax, blended with pure essential oils to create fragrances that are as safe as they are delightful. No synthetic chemicals, no artificial colors – just honest, handcrafted candles made with ingredients we trust in our own home.
+Whether you're looking for everyday candles to brighten your home, or customized designs for birthdays, pujas, weddings, and special celebrations, we're here to bring your vision to life. We welcome bulk orders for events and parties, and offer a variety of products at different price points to suit every budget – because everyone deserves the warmth of a beautiful, natural candle.
+                        </p>
+                        <p>
+                            Each candle is hand-poured with love. From our family to yours, we hope our candles bring warmth, comfort, and a little bit of magic to your special moments
+                        </p>
+                    </div>
+                    <div class="about-image">
+                        <img src="images/RoseInJar.PNG" alt="Beautiful candle in jar - Candles by Amaira" style="width: 100%; height: auto; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌿</div>
+                        <h3 class="feature-title">Natural Ingredients</h3>
+                        <p class="feature-desc">
+                            Made with premium soy wax, beeswax, and pure essential oils – no harmful chemicals or artificial fragrances
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✋</div>
+                        <h3 class="feature-title">Handcrafted</h3>
+                        <p class="feature-desc">
+                            Lovingly handmade in our home with help from our 5-year-old candle enthusiast, Amaira
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3 class="feature-title">Custom Scents</h3>
+                        <p class="feature-desc">
+                            Choose from our curated collection of fragrances to create your perfect atmosphere.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-title">Let's Connect!</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link" id="footerWhatsApp">📱 WhatsApp Us</a>
+                <a href="#" class="footer-link" id="footerEmail">✉️ Email Us</a>
+            </div>
+            <p style="color: #999; font-size: 0.85rem; margin-top: 20px;">© 2026 Candles by Amaira · Made with ♥</p>
+        </footer>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
