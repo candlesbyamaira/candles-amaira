@@ -171,6 +171,12 @@
                 badge: 'Wizard',
                 image: 'images/Wizard.PNG',
                 emoji: false
+            },
+            {
+                name: 'Flower Bouquet',
+                badge: 'Bouquet',
+                image: 'images/FlowerBouquet.PNG',
+                emoji: false
             }
         ];
 
