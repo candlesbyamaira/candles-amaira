@@ -231,12 +231,12 @@
                     </div>
 
                     <div class="order-section">
-                        <a href="#" class="btn btn-whatsapp" id="whatsapp-${index}">
+                        <button type="button" class="btn btn-whatsapp" id="whatsapp-${index}">
                             📱 WhatsApp
-                        </a>
-                        <a href="#" class="btn btn-email" id="email-${index}">
+                        </button>
+                        <button type="button" class="btn btn-email" id="email-${index}">
                             ✉️ Email
-                        </a>
+                        </button>
                     </div>
                 `;
 
@@ -272,9 +272,21 @@
                         `Hello!\n\nI'd like to order:\n\nProduct: ${product.name}${fragText}\n\nPlease let me know about availability and shipping.\n\nThank you! 🕯️`
                     );
 
-                    whatsappBtn.href = `https://wa.me/${atob(CONFIG.whatsappNumber)}?text=${whatsappMessage}`;
-                    emailBtn.href = `mailto:${CONFIG.email}?subject=${emailSubject}&body=${emailBody}`;
+                    whatsappBtn.dataset.url = `https://wa.me/${atob(CONFIG.whatsappNumber)}?text=${whatsappMessage}`;
+                    emailBtn.dataset.url = `mailto:${CONFIG.email}?subject=${emailSubject}&body=${emailBody}`;
                 }
+
+                whatsappBtn.addEventListener('click', function() {
+                    if (this.dataset.url) {
+                        window.location.href = this.dataset.url;
+                    }
+                });
+
+                emailBtn.addEventListener('click', function() {
+                    if (this.dataset.url) {
+                        window.location.href = this.dataset.url;
+                    }
+                });
 
                 updateOrderLinks();
             });
