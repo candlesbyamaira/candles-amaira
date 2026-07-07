@@ -291,22 +291,11 @@
         }
 
         /* Products Grid */
-        .shop-disclaimer {
-            margin: 10px 0 20px;
-            padding: 12px 16px;
-            border-radius: 14px;
-            background: rgba(255, 140, 122, 0.12);
-            color: var(--charcoal);
-            font-size: 0.92rem;
-            text-align: center;
-            font-weight: 500;
-        }
-
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
-            padding: 20px 0 80px;
+            padding: 40px 0 80px;
         }
 
         .product-card {
