@@ -205,7 +205,7 @@
                         <div class="fragrance-title">🌸 Pick Your Scent</div>
                         <div class="fragrance-pills">
                             ${fragrances.map((f, fragranceIndex) => `
-                                <button class="fragrance-pill ${fragranceIndex >= 6 ? 'is-hidden' : ''}" data-fragrance="${f.name}">
+                                <button type="button" class="fragrance-pill ${fragranceIndex >= 6 ? 'is-hidden' : ''}" data-fragrance="${f.name}" aria-pressed="false">
                                     ${f.emoji} ${f.name}
                                 </button>
                             `).join('')}
@@ -233,7 +233,7 @@
                 const whatsappBtn = card.querySelector(`#whatsapp-${index}`);
                 const emailBtn = card.querySelector(`#email-${index}`);
 
-                let selectedFragrances = [];
+                let selectedFragrance = '';
                 let expanded = false;
                 const visibleCount = 6;
 
@@ -252,15 +252,34 @@
                 }
 
                 fragrancePills.forEach(pill => {
-                    pill.addEventListener('click', function() {
-                        this.classList.toggle('selected');
-                        selectedFragrances = fragrancePills
-                            .filter(p => p.classList.contains('selected'))
-                            .map(p => p.dataset.fragrance);
-                        selectedDisplay.textContent = selectedFragrances.length > 0
-                            ? `✨ ${selectedFragrances.join(', ')} selected`
+                    const toggleFragrance = (event) => {
+                        event.preventDefault();
+                        const alreadySelected = pill.classList.contains('selected');
+
+                        fragrancePills.forEach(option => {
+                            option.classList.remove('selected');
+                            option.setAttribute('aria-pressed', 'false');
+                        });
+
+                        if (!alreadySelected) {
+                            pill.classList.add('selected');
+                            pill.setAttribute('aria-pressed', 'true');
+                            selectedFragrance = pill.dataset.fragrance;
+                        } else {
+                            selectedFragrance = '';
+                        }
+
+                        selectedDisplay.textContent = selectedFragrance
+                            ? `✨ ${selectedFragrance} selected`
                             : '';
                         updateOrderLinks();
+                    };
+
+                    pill.addEventListener('click', toggleFragrance);
+                    pill.addEventListener('keydown', (event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                            toggleFragrance(event);
+                        }
                     });
                 });
 
@@ -270,8 +289,8 @@
                 });
 
                 function updateOrderLinks() {
-                    const fragText = selectedFragrances.length > 0
-                        ? ` - ${selectedFragrances.join(', ')} scents`
+                    const fragText = selectedFragrance
+                        ? ` - ${selectedFragrance} scent`
                         : '';
 
                     const whatsappMessage = encodeURIComponent(
@@ -288,8 +307,6 @@
                 }
 
                 syncVisiblePills();
-                updateOrderLinks();
-
                 updateOrderLinks();
             });
         }

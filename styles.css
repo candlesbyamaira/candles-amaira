@@ -391,6 +391,10 @@
             transition: all 0.3s ease;
             color: var(--charcoal);
             text-align: center;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            pointer-events: auto;
         }
 
         .fragrance-pill:hover {
