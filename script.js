@@ -121,7 +121,7 @@
             {
                 name: 'Summer Berries',
                 badge: 'Seasonal',
-                image: 'images/Berries.PNG',
+                image: 'images/SummerBerries.PNG',
                 emoji: false
             },
             {
@@ -158,6 +158,18 @@
                 name: 'Newborn Joy',
                 badge: 'Baby Shower',
                 image: 'images/BabyFeet.PNG',
+                emoji: false
+            },
+            {
+                name: 'Inspired Candles - Hero Harvest',
+                badge: 'Hero Harvest',
+                image: 'images/Web.PNG',
+                emoji: false
+            },
+            {
+                name: 'Insipred Candles - Wizards Brew',
+                badge: 'Wizard',
+                image: 'images/Wizard.PNG',
                 emoji: false
             }
         ];
