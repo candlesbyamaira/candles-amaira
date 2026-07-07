@@ -204,12 +204,13 @@
                     <div class="fragrance-section">
                         <div class="fragrance-title">🌸 Pick Your Scent</div>
                         <div class="fragrance-pills">
-                            ${fragrances.map(f => `
-                                <button class="fragrance-pill" data-fragrance="${f.name}">
+                            ${fragrances.map((f, fragranceIndex) => `
+                                <button class="fragrance-pill ${fragranceIndex >= 6 ? 'is-hidden' : ''}" data-fragrance="${f.name}">
                                     ${f.emoji} ${f.name}
                                 </button>
                             `).join('')}
                         </div>
+                        <button type="button" class="fragrance-toggle" data-expanded="false">Show more scents</button>
                         <div class="selection-display" id="selected-${index}"></div>
                     </div>
 
@@ -226,33 +227,51 @@
                 grid.appendChild(card);
 
                 // Fragrance selection
-                const fragrancePills = card.querySelectorAll('.fragrance-pill');
+                const fragrancePills = Array.from(card.querySelectorAll('.fragrance-pill'));
+                const fragranceToggle = card.querySelector('.fragrance-toggle');
                 const selectedDisplay = card.querySelector(`#selected-${index}`);
                 const whatsappBtn = card.querySelector(`#whatsapp-${index}`);
                 const emailBtn = card.querySelector(`#email-${index}`);
 
                 let selectedFragrances = [];
+                let expanded = false;
+                const visibleCount = 6;
+
+                function syncVisiblePills() {
+                    fragrancePills.forEach((pill, idx) => {
+                        pill.classList.toggle('is-hidden', idx >= visibleCount && !expanded);
+                    });
+
+                    if (fragrancePills.length > visibleCount) {
+                        fragranceToggle.style.display = 'inline-flex';
+                        fragranceToggle.textContent = expanded ? 'Show fewer scents' : 'Show more scents';
+                        fragranceToggle.setAttribute('data-expanded', String(expanded));
+                    } else {
+                        fragranceToggle.style.display = 'none';
+                    }
+                }
 
                 fragrancePills.forEach(pill => {
                     pill.addEventListener('click', function() {
-                        if (this.classList.contains('selected')) {
-                            this.classList.remove('selected');
-                        } else {
-                            this.classList.add('selected');
-                        }
-                        selectedFragrances = Array.from(fragrancePills)
+                        this.classList.toggle('selected');
+                        selectedFragrances = fragrancePills
                             .filter(p => p.classList.contains('selected'))
                             .map(p => p.dataset.fragrance);
-                        selectedDisplay.textContent = selectedFragrances.length > 0 
-                            ? `✨ ${selectedFragrances.join(', ')} chosen!` 
+                        selectedDisplay.textContent = selectedFragrances.length > 0
+                            ? `✨ ${selectedFragrances.join(', ')} selected`
                             : '';
                         updateOrderLinks();
                     });
                 });
 
+                fragranceToggle.addEventListener('click', function() {
+                    expanded = !expanded;
+                    syncVisiblePills();
+                });
+
                 function updateOrderLinks() {
-                    const fragText = selectedFragrances.length > 0 
-                        ? ` - ${selectedFragrances.join(', ')} scents` 
+                    const fragText = selectedFragrances.length > 0
+                        ? ` - ${selectedFragrances.join(', ')} scents`
                         : '';
 
                     const whatsappMessage = encodeURIComponent(
@@ -267,6 +286,9 @@
                     whatsappBtn.href = `https://wa.me/${atob(CONFIG.whatsappNumber)}?text=${whatsappMessage}`;
                     emailBtn.href = `mailto:${CONFIG.email}?subject=${emailSubject}&body=${emailBody}`;
                 }
+
+                syncVisiblePills();
+                updateOrderLinks();
 
                 updateOrderLinks();
             });

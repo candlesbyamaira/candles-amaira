@@ -375,25 +375,26 @@
         }
 
         .fragrance-pills {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 8px;
         }
 
         .fragrance-pill {
-            padding: 10px 18px;
+            padding: 9px 10px;
             background: white;
             border: 2px solid transparent;
-            border-radius: 25px;
-            font-size: 0.8rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             color: var(--charcoal);
+            text-align: center;
         }
 
         .fragrance-pill:hover {
-            transform: scale(1.05);
+            transform: translateY(-2px);
             background: var(--mint);
             color: white;
         }
@@ -402,11 +403,31 @@
             background: linear-gradient(135deg, var(--coral), var(--lavender));
             color: white;
             border-color: transparent;
-            transform: scale(1.05);
+            transform: translateY(-2px);
+        }
+
+        .fragrance-pill.is-hidden {
+            display: none;
+        }
+
+        .fragrance-toggle {
+            margin-top: 10px;
+            border: none;
+            background: transparent;
+            color: var(--coral);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            font-size: 0.8rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .fragrance-toggle:hover {
+            text-decoration: underline;
         }
 
         .selection-display {
-            margin-top: 12px;
+            margin-top: 10px;
             font-size: 0.85rem;
             color: var(--coral);
             font-weight: 600;
